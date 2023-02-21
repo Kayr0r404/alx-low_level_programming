@@ -1,4 +1,4 @@
-#include "main.c"
+#include "main.h"
 /**
  * main - Entry point
  * Description: 'Write a function that prints 10 times the alphabet,
@@ -8,10 +8,11 @@
 void print_alphabet_x10(void)
 {
 	char alph;
+	int counter;
 
-	for (int i = 0; i < 10; i++)
+	for (counter = 0; counter < 10; counter++)
 	{
-		for (aplh = 97; alph <= 122; aplh++)
+		for (alph = 97; alph <= 122; alph++)
 		{
 			_putchar(alph);
 		}

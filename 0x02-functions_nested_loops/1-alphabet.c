@@ -1,15 +1,5 @@
 #include "main.h"
-/**
- * main - Entry point
- * Description: 'Write a program that prints _putchar, followed by a new line'
- * Return: Always 0 (Success)
- */
-int main(void)
-{
-	print_alphabet();
-	return (1);
-}
-
+#include <stdio.h>
 /**
  * print_alphabet - Entry point
  * Description: 'Write a function that prints the alphabet,
@@ -21,7 +11,7 @@ void print_alphabet(void)
 
 	for (alph = 97; alph <= 122; alph++)
 	{
-		_putchar(alph);
+		printf("%c", alph);
 	}
-	_putchar(alph);
+	printf("\n");
 }

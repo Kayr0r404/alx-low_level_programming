@@ -11,7 +11,7 @@ void print_alphabet(void)
 
 	for (alph = 97; alph <= 122; alph++)
 	{
-		printf("%c", alph);
+		_putchar(alph);
 	}
-	printf("\n");
+	_putchar('\n');
 }

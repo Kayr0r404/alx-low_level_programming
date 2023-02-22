@@ -13,6 +13,6 @@ int print_last_digit(int c)
 	{
 		lastDigit = -lastDigit;
 	}
-	_putchar(lastDigit);
+	_putchar(lastDigit + 48);
 	return (lastDigit);
 }

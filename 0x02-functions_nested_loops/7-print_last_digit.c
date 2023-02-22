@@ -9,6 +9,7 @@
 int print_last_digit(int c)
 {
 	int lastDigit = c % 10;
+
 	if (c < 0)
 	{
 		lastDigit = -lastDigit;

@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- *mul - entry function
+ *mul - 'entry function'
  *@a: 'integer'
  *@b: 'integer'
  * Description: 'Write a function that multiplies two integers.

@@ -7,7 +7,7 @@
  * Prototype: int mul(int a, int b)'
  * Retrun: Product of @a and @b
  */
-inr mul(int a, int b)
+int mul(int a, int b)
 {
 	return (a * b);
 }

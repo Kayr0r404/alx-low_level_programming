@@ -12,9 +12,7 @@ void print_most_numbers(void)
 	char num;
 
 	for (num = 48; num < 58; num++)
-		if (num == 4 || num == 2)
-			continue;
-		else
+		if (num != 4 || num != 2)
 			_putchar(num);
 	_putchar('\n');
 }

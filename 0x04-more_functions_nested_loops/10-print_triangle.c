@@ -11,7 +11,7 @@
 void print_triangle(int size)
 {
 	if (size <= 0)
-		printf("\n");
+		_putchar("\n");
 	else
 	{
 		int i, j;
@@ -20,10 +20,10 @@ void print_triangle(int size)
 		{
 			for (j = 1; j <= size; j++)
 				if (j >= i)
-					printf("#");
+					_putchar("#");
 				else
-					printf("-");
-			printf("\n");
+					_putchar("-");
+			_putchar("\n");
 		}
 	}
 }

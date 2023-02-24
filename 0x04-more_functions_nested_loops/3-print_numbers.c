@@ -1,4 +1,5 @@
 #include "main.h"
+#include <unistd.h>
 /**
  *print_numbers - entry point
  * Description: 'Write a function that prints the numbers,
@@ -7,9 +8,23 @@
  */
 void print_numbers(void)
 {
-	int i;
+	char i;
 
 	for (i = 48; i < 58; i++)
-		_putchar("%d", i);
-	_putchar("\n");
+	{
+		_putchar(i);
+	}
+	_putchar('\n');
+}
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }

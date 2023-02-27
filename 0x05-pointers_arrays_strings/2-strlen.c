@@ -5,6 +5,7 @@
 *@s: 'String passed'
 *Description: 'Write a function that returns the length of a string.
 *Prototype: int _strlen(char *s)'
+*Return: 'the length of the string'
 */
 int _strlen(char *s)
 {

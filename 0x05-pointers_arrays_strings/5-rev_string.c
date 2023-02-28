@@ -9,9 +9,12 @@
 */
 void rev_string(char *s)
 {
-	size_t length = strlen(s);
+	int length = 0, i;
 
-	for (size_t i = 0; i < length / 2; i++)
+	while (s[length] != '\0')
+		length++;
+
+	for (i = 0; i < length / 2; i++)
 	{
 		char temp = s[i];
 

@@ -15,12 +15,15 @@
 
 char *_strcat(char *dest, char *src)
 {
-	int lenDest = strlen(dest);
-	int lenSrc = strlen(src);
-	int len = lenDest + lenSrc;
-	char *buffer = (char *) malloc(len + 1);
+	/*first get length of dest*/
+	int lenDest = 0, i;
 
-	strcpy(buffer, dest);
-	strcat(buffer, src);
-	return (buffer);
+	while (dest[lenDest] != '\0')
+		lenDest++;
+
+	/*from the */
+	for (i = 0; src[i] != '\0'; i++)
+		dest[lenDest + i] = src[i];
+
+	return (dest);
 }

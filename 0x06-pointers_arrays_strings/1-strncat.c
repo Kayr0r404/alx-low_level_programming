@@ -20,13 +20,21 @@ char *_strncat(char *dest, char *src, int n)
 	int lenSrc = len(src);
 	int i;
 
-	for (i = 0; i <= n; i++)
-		if (lenSrc >= n)
+	if (lenSrc <= n)
+	{
+		for (i = 0; src[i] != '\0'; i++)
 			dest[lenDest + i] = src[i];
+	}
+	else
+	{
+		for (i = 0; i < n; i++)
+			dest[lenDest + i] = src[i];
+	}
 	dest[lenDest + i] = '\0';
 
 	return (dest);
 }
+
 /**
 *len - function
 *@str: String

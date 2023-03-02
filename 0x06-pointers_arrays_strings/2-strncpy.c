@@ -17,7 +17,6 @@ char *_strncpy(char *dest, char *src, int n)
 {
 	int i;
 
-	printf("%d\n", len(src));
 	if (len(src) >= n)
 	{
 		for (i = 0; i < n; i++)
@@ -28,7 +27,7 @@ char *_strncpy(char *dest, char *src, int n)
 	{
 		for (i = 0; i < n; i++)
 		{
-			 if (i < len(src))
+			if (i < len(src))
 				dest[i] = src[i];
 			else
 				dest[i] = '\0';

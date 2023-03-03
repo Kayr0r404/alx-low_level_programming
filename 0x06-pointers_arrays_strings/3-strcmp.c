@@ -1,4 +1,6 @@
 #include "main.h"
+int len(char *str);
+
 /**
 *_strcmp - entry
 *@s1: first string
@@ -12,13 +14,43 @@ int _strcmp(char *s1, char *s2)
 {
 	int i;
 
-	for (i = 0; s1[i] != '\0'; i++)
+	if (len(s1) < len(s2))
 	{
-		if (s1[i] > s2[i])
-			return (1);
-		else if (s1[i] < s2[i])
-			return (-1);
+		for (i = 0; s1[i] != '\0'; i++)
+		{
+			if (s1[i] > s2[i])
+				return (1);
+			else if (s1[i] < s2[i])
+				return (-1);
+		}
+	}
+	else
+	{
+		for (i = 0; s2[i] != '\0'; i++)
+		{
+			if (s2[i] > s1[i])
+				return (1);
+			else if (s2[i] < s1[i])
+				return (-1);
+		}
 	}
 
 	return (0);
+}
+
+/**
+*len - entry
+*@str: string
+*Description: string length
+*Return: string leng
+*/
+
+int len(char *str)
+{
+	int len = 0;
+
+	while (str[len] != '\0')
+		len++;
+
+	return (len);
 }

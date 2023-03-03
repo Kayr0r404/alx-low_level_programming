@@ -13,21 +13,14 @@
 
 char *cap_string(char *str)
 {
-	int i;
+	int i, j;
+	char arrSepOfWords[] = {9, 10, 32, 33, 34, 40, 41, 44, 46, 59, 63, 123, 125};
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		bool cond1 = str[i] >= 32 && str[i] <= 47;
-		bool cond2 = str[i] >= 9 && str[i] <= 10;
-		bool cond3 = str[i] >= 123 && str[i] <= 125;
-		bool cond4 = str[i] == 58 || str[i] == 63;
-
-		if ((cond1) || (cond2) || (cond3) || (cond4))
-		{
-			if (str[i + 1] <= 122 && str[i + 1] >= 97)
+		for (j = 0; j < 13; j++)
+			if (str[i] == arrSepOfWords[j] && (str[i + 1] >= 97 && str[i + 1] <= 122))
 				str[i + 1] = str[i + 1] - 32;
-		}
 	}
-
 	return (str);
 }

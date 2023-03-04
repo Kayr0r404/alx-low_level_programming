@@ -1,4 +1,6 @@
 char *_strcat(char *dest, char *src);
+void print_number(int n);
+char *leet(char *);
 int max(int a, int b);
 int _strcmp(char *s1, char *s2);
 char *cap_string(char *);

@@ -14,7 +14,7 @@
 char *cap_string(char *str)
 {
 	int i, j;
-	char arrSepOfWords[] = {'\n', '\t', ' ', 33, 34, 40, 41, 44, 46, 59, 63, 123, 125};;
+	char arrSepOfWords[] = {'\n', '\t', ' ', 33, 34, 40, 41, 44, 46, 59, 63, 123, 125};
 
 	for (i = 0; str[i] != '\0'; i++)
 	{

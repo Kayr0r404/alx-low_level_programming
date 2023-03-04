@@ -1,4 +1,5 @@
 char *_strcat(char *dest, char *src);
+char _putchar(char c);
 void print_number(int n);
 char *leet(char *);
 int max(int a, int b);

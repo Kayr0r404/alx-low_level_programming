@@ -40,5 +40,5 @@ void print_diagsums(int *a, int size)
 	}
 
 	/*printing the diagonal sums*/
-	printf("%d,  %d\n", rightDiag, leftDiag);
+	printf("%d, %d\n", rightDiag, leftDiag);
 }

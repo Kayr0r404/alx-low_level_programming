@@ -29,9 +29,16 @@ void print_diagsums(int *a, int size)
 			/*summing the elements on the left diagonal*/
 			else if (i + j == size - 1)
 				leftDiag += *(a + i * size + j);
+
+			/*consider when j == i == size -1*/
+			if (size % 2 != 0)
+			{
+				if ( i == size / 2 && j == size / 2)
+					leftDiag += *(a + i * size + j);
+			}
 		}
 	}
 
 	/*printing the diagonal sums*/
-	printf("%d %d\n", rightDiag, leftDiag);
+	printf("%d,  %d\n", rightDiag, leftDiag);
 }

@@ -13,13 +13,17 @@
 
 char *_strchr(char *s, char c)
 {
+	/*if empty char passed, return the whole string*/
+	if (c == '')
+		return (s);
 
+	/*loop through the string to find a matching char*/
 	while (*s != '\0')
 	{
 		if (*s ==  c)
 			return (s);
 		s++;
 	}
-
+	/*if the char not found return null*/
 	return (NULL);
 }

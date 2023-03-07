@@ -14,7 +14,9 @@
 char *_strchr(char *s, char c)
 {
 	/*if empty char passed, return the whole string*/
-	if (c == '\0')
+	if (*s == '\0')
+		return (NULL);
+	else if(c == '\0')
 		return (s);
 
 	/*loop through the string to find a matching char*/

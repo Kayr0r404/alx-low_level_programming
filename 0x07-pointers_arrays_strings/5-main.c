@@ -13,10 +13,13 @@ int main(void)
 	char *t;
 	char *name = "mahlare-karabo";
 	char *subName = "are";
+	char *blank = "";
 
 	t = _strstr(s, f);
 	printf("%s\n", t);
 	t = _strstr(name, subName);
+	printf("%s\n", t);
+	t = _strstr(name, blank);
 	printf("%s\n", t);
 	return (0);
 }

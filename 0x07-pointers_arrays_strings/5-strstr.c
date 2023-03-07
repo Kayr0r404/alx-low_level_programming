@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 int strLen(char *str);
 /**
  *_strstr - Entry point
@@ -31,19 +32,26 @@ char *_strstr(char *haystack, char *needle)
 					break;
 			}
 		}
+
 		i = num;
 
 		if (j == strLen(needle))
 			break;
 	}
 
-	while (counter <= i - 1)
+	if (j != strLen(needle))
+		return (NULL);
+	else if (j == strLen(needle) && j != 0)
 	{
-		counter++;
-		haystack++;
+		while (counter <= i - 1)
+		{
+			counter++;
+			haystack++;
+		}
+		return (haystack);
 	}
 
-	return (haystack);
+	return (NULL);
 }
 
 /**

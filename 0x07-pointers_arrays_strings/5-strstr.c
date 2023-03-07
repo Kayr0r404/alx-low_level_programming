@@ -51,6 +51,8 @@ char *_strstr(char *haystack, char *needle)
 			return (haystack);
 		}
 	}
+	else if (strLen(needle) == 0)
+		return (haystack);
 	return (NULL);
 }
 

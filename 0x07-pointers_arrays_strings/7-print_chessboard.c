@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
- *
+ *print_chessboard -entry
+ *@a: 2D array
  * Description: Write a function that prints the chessboard.
  * Prototype: void print_chessboard(char (*a)[8]);'
  */

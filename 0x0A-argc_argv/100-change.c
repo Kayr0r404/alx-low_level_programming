@@ -30,7 +30,13 @@ int main(int argc, char *argv[])
 	}
 	if (isInteger(argv[1]) == 0)
 	{
-		printf("%d\n", highestFactor(atoi(argv[1])));
+		if (atoi(argv[1]) >= 0)
+			printf("%d\n", highestFactor(atoi(argv[1])));
+		else
+		{
+			printf("%d\n", 0);
+			return (1);
+		}
 	}
 	else
 	{
@@ -51,7 +57,7 @@ int main(int argc, char *argv[])
 int isInteger(char *str)
 {
 	/*check if the first charcter is a sign (+ or -)*/
-	if (*str == '+')
+	if (*str == '+' || *str == '-')
 		str++;
 
 	while (*str != '\0')

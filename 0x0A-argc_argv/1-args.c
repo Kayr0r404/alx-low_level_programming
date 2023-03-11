@@ -12,7 +12,7 @@
 
 int main(int argc, char *argv[])
 {
-	long unsigned int i;
+	unsigned int long i;
 	char *arr[1] = {"Karabo"};
 
 	for (i = 0; (sizeof(arr) / sizeof(arr[0])) > i; i++)

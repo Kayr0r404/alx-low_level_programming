@@ -20,5 +20,5 @@ int main(int argc, char *argv[])
 		arr[0] = argv[i];
 	}
 	printf("%d\n", argc - 1);
-	return (argc);
+	return (0);
 }

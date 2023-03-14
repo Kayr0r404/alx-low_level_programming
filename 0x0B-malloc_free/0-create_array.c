@@ -15,12 +15,14 @@ char *create_array(unsigned int size, char c)
 {
 	unsigned int i;
 	char *ptrArray;
-	
+
 	/*allocate array size using malloc()*/
 	ptrArray = malloc(size * sizeof(char));
 
-	/*verify if malloc is successful in allocating memory
-	 * if it is unsuccesful then NULL pointer is returned*/
+	/*
+	 * verify if malloc is successful in allocating memory
+	 * if it is unsuccesful then NULL pointer is returned
+	 */
 	if (ptrArray == NULL)
 		return (NULL);
 

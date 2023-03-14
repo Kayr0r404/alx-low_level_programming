@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 #include <stdlib.h>
 int strLen(char str);
 /**
@@ -25,7 +26,7 @@ char *_strdup(char *str)
 	if (str == NULL)
 		return (NULL);
 
-	ptrStr = (char *) malloc(2 * sizeof(str));
+	ptrStr = (char *) malloc(2 * strlen(str));
 	if (ptrStr == NULL)
 		return (NULL);
 	for (i = 0; i < sizeof(str); i++)

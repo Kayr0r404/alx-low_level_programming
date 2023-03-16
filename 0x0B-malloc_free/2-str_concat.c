@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+char *_nullPtr(char *s);
+
 /**
  *str_concat - Entry Point
  *@s1: destination string
@@ -22,28 +24,64 @@ char *str_concat(char *s1, char *s2)
 
 	unsigned int long i = 0;
 
-	ptrStrConcat = (char *) malloc(strlen(s1) * sizeof(char));
+	if (s1 != NULL && s2 != NULL)
+	{
+		int len = strlen(s1) + strlen(s2) + 1;
 
-	if (ptrStrConcat == NULL)
-		return (NULL);
+		ptrStrConcat = (char *) malloc(len * sizeof(char));
+
+		if (ptrStrConcat == NULL)
+			return (NULL);
+
+		while (*s1 != '\0')
+		{
+			ptrStrConcat[i++] = *s1;
+			s1++;
+		}
+
+		/*ptrStrConcat = realloc(ptrStrConcat, strlen(s2) * sizeof(char) + 1);*/
+		if (ptrStrConcat == NULL)
+			return (NULL);
+
+		while (*s2 != '\0')
+		{
+			ptrStrConcat[i++] = *s2;
+			s2++;
+		}
+	}
 	else if (s1 == NULL)
-		s1 = "";
+		ptrStrConcat = _nullPtr(s2);
 	else if (s2 == NULL)
-		s2 = "";
-
-	while (*s1 != '\0')
-	{
-		ptrStrConcat[i++] = *s1;
-		s1++;
-	}
-
-	ptrStrConcat = realloc(ptrStrConcat, strlen(s2) * sizeof(char));
-
-	while (*s2 != '\0')
-	{
-		ptrStrConcat[i++] = *s2;
-		s2++;
-	}
+		ptrStrConcat = _nullPtr(s1);
+	ptrStrConcat[i] = '\0';
 
 	return (ptrStrConcat);
+}
+
+/**
+ * _nullPtr - double check if input pointer is null
+ * @s: input pointer
+ * Description: 'if input pointer is null'
+ * Return: a pointer
+ */
+
+char *_nullPtr(char *s)
+{
+	char *ptrStr;
+
+	int i = 0;
+
+	if (s != NULL)
+	{
+		ptrStr = (char *) malloc(strlen(s) * sizeof(char) + 1);
+		if (ptrStr == NULL)
+			return (NULL);
+
+		while (*s != '\0')
+		{
+			ptrStr[i++] = *s;
+			s++;
+		}
+	}
+	return (ptrStr);
 }

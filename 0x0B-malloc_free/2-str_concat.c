@@ -18,26 +18,26 @@
 char *str_concat(char *s1, char *s2)
 {
 	char *ptrStrConcat;
-	unsigned int long i, j = 0;
-	int len = strlen(s1) + strlen(s2);
+	unsigned int long i = 0;
 
-	ptrStrConcat = (char *) malloc(len + 1);
+	ptrStrConcat = (char *) malloc(strlen(s1) * sizeof(char));
 
 	if (ptrStrConcat == NULL)
 		return (NULL);
 
 	while (*s1 != '\0')
 	{
-		ptrStrConcat[j] = *s1;
+		ptrStrConcat[i++] = *s1;
 		s1++;
-		j++;
 	}
 
-	for (i = j + 1; *s2 != '\0'; i++)
+	ptrStrConcat = realloc(ptrStrConcat, strlen(s2) * sizeof(char));
+
+	while (*s2 != '\0')
 	{
-		ptrStrConcat[i] = *s2;
+		ptrStrConcat[i++] = *s2;
 		s2++;
 	}
-	/*ptrStrConcat[ i + 1] = '\0';*/
+
 	return (ptrStrConcat);
 }

@@ -48,12 +48,18 @@ char *str_concat(char *s1, char *s2)
 			ptrStrConcat[i++] = *s2;
 			s2++;
 		}
+
+		ptrStrConcat[i] = '\0';
 	}
 	else if (s1 == NULL)
 		ptrStrConcat = _nullPtr(s2);
 	else if (s2 == NULL)
 		ptrStrConcat = _nullPtr(s1);
-	ptrStrConcat[i] = '\0';
+	else if (s1 == NULL && s2 == NULL)
+	{
+		ptrStrConcat = (char *) malloc(sizeof(char));
+		ptrStrConcat[i] = '\0';
+	}
 
 	return (ptrStrConcat);
 }
@@ -83,5 +89,6 @@ char *_nullPtr(char *s)
 			s++;
 		}
 	}
+	ptrStr[i] = '\0';
 	return (ptrStr);
 }

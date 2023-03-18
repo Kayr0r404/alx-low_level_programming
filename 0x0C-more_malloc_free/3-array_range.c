@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * array_range - a function that creates an array of integers.
@@ -19,14 +20,16 @@ int *array_range(int min, int max)
 	int i = 0, *ptrInt, counter = min;
 
 	if (min > max)
+	{
 		return (NULL);
+	}
 
 	ptrInt = calloc((max - min + 1), sizeof(int));
 
 	if (ptrInt == NULL)
 		return (NULL);
 
-	while (i <= (max - min + 1))
+	while (i <= (max - min))
 	{
 		*(ptrInt + i) = counter;
 		i++;

@@ -31,23 +31,15 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		char *emptyStr = malloc(1);
 		*emptyStr = '\0';
-		return emptyStr;
+		return (emptyStr);
 	}
 
 	/*If n is greater or equal to the length of s2 then use the entire string s2*/
 	if (strlen(s2) <= n)
 	{
-		printf("%ld\n", strlen(s2));
 		ptrConcat = malloc(strlen(s1) + strlen(s2) + 1);
 		n = strlen(s2);
 	}
-	/*
-	else if (strlen(s1) == 0 && strlen(s2) == 0)
-	{
-		printf("len of s1 = %ld and len of s2 = %ld\n", strlen(s1), strlen(s2));
-		ptrConcat = malloc(sizeof(char));
-	}
-	*/
 	else
 		ptrConcat = malloc(strlen(s1) + n + 1);
 

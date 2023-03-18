@@ -25,18 +25,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	/*treat null string as empty string*/
 	if (s2 == NULL)
 		s2 = avoidNullStr(s2);
-	else if (s1 == NULL)
+	if (s1 == NULL)
 		s1 = avoidNullStr(s1);
-	if (s1 == NULL && s2 == NULL)
-	{
-		char *null = malloc(sizeof(char));
-
-		if (null == NULL)
-			return (NULL);
-
-		*null = '\0';
-		return (null);
-	}
 
 	/*If n is greater or equal to the length of s2 then use the entire string s2*/
 	if (strlen(s2) <= n)

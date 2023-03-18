@@ -19,7 +19,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *voidPtr;
 
-	if (nmemb == 0)
+	if (nmemb == 0 || size == 0)
 		return (NULL);
 	voidPtr = calloc(nmemb, size);
 

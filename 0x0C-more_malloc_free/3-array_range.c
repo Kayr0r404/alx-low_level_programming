@@ -26,7 +26,7 @@ int *array_range(int min, int max)
 	if (ptrInt == NULL)
 		return (NULL);
 
-	while (i <= max)
+	while (i <= (max - min + 1))
 	{
 		*(ptrInt + i) = counter;
 		i++;

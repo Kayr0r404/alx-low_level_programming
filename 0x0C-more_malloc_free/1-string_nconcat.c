@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -26,18 +27,27 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s2 = avoidNullStr(s2);
 	else if (s1 == NULL)
 		s1 = avoidNullStr(s1);
-	else if(s1 == NULL && s2 == NULL)
+	else if (s1 == NULL && s2 == NULL)
 	{
-		s1 = avoidNullStr(s1);
-		s2 = avoidNullStr(s2);
+		char *emptyStr = malloc(1);
+		*emptyStr = '\0';
+		return emptyStr;
 	}
 
 	/*If n is greater or equal to the length of s2 then use the entire string s2*/
 	if (strlen(s2) <= n)
 	{
+		printf("%ld\n", strlen(s2));
 		ptrConcat = malloc(strlen(s1) + strlen(s2) + 1);
 		n = strlen(s2);
 	}
+	/*
+	else if (strlen(s1) == 0 && strlen(s2) == 0)
+	{
+		printf("len of s1 = %ld and len of s2 = %ld\n", strlen(s1), strlen(s2));
+		ptrConcat = malloc(sizeof(char));
+	}
+	*/
 	else
 		ptrConcat = malloc(strlen(s1) + n + 1);
 

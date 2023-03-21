@@ -1,22 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
+/**
  * main - Entry point
- * @argc: number of arguments
- * @argv: array cotaining arguments
  * Description: function that print the name of the file
- * return: 0 Always a success
+ * Return: 0 Always a success
  */
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	if (argc == 1)
-	{
-		argv[0] = "2-main.c";
-		printf("%s\n", argv[0]);
-	}
-	else
-		exit(98);
+	printf("%s\n", __FILE__);
 	return (0);
 }

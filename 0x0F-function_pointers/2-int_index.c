@@ -29,8 +29,6 @@ int int_index(int *array, int size, int (*cmp)(int))
 	{
 		if ((*pF)(array[i]))
 			return (i);
-		else if((*pF)(array[i]) == 0)
-			exit(98);
 	}
 	return (-1);
 }

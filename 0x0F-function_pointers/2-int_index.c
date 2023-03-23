@@ -24,10 +24,13 @@ int int_index(int *array, int size, int (*cmp)(int))
 		return (-1);
 	else if (cmp == NULL || array == NULL)
 		exit(98);
+
 	for (i = 0; i < size; i++)
 	{
 		if ((*pF)(array[i]))
 			return (i);
+		else if((*pF)(array[i]) == 0)
+			exit(98);
 	}
 	return (-1);
 }

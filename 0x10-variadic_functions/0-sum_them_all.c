@@ -2,8 +2,8 @@
 #include <stdarg.h>
 
 /*
- * Write a function that returns the sum of all its parameters.
- * If n == 0, return 0
+ * sum_them_all - function that returns the sum of all its parameters.
+ * Return: if n == 0, return 0 else the sum
  */
 
 int sum_them_all(const unsigned int n, ...)

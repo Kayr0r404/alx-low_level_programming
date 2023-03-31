@@ -17,18 +17,12 @@
 list_t *add_node(list_t **head, const char *str)
 {
 	list_t *newNode = malloc(sizeof(list_t));
-	char *strDup;
 
-	if (!str)
-		return (NULL);
-	/*Allocate mem to duplicate str*/
-	strDup = malloc(strlen(str) + 1);
-
-	if (!strDup || !newNode)
+	if (!str || !newNode)
 		return (NULL);
 
-	strDup = strdup(str);/*duplicate str*/
-	newNode->str = strDup;
+	newNode->str = strdup(str);
+	newNode->len = strlen(str);
 	newNode->next = *head;
 	*head = newNode;
 

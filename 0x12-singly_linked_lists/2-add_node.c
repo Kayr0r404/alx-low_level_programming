@@ -20,7 +20,7 @@ list_t *add_node(list_t **head, const char *str)
 	char *strDup;
 
 	if (!str)
-		str = "";
+		return (NULL);
 	/*Allocate mem to duplicate str*/
 	strDup = malloc(strlen(str) + 1);
 

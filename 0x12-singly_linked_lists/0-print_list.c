@@ -1,6 +1,7 @@
 #include "lists.h"
 #include <stddef.h>
 #include <stdio.h>
+#include <string.h>
 
 /**
  * print_list -  Write a function that prints
@@ -21,7 +22,7 @@ size_t print_list(const list_t *h)
 		if (!h->str)
 			printf("%s %p\n", "[0]", ptr);
 		else
-			printf("[%u] %s\n", h->len, h->str);
+			printf("[%lu] %s\n", strlen(h->str), h->str);
 		count++;
 		h = h->next;
 	}

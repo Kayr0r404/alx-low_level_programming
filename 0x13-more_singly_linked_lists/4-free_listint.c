@@ -3,25 +3,22 @@
 
 /**
  * free_listint - function that frees a listint_t list.
- * @h: input list
+ * @head: pointer to the list
  * Prototype: void free_listint(listint_t *head);
  */
 
 void free_listint(listint_t *head)
 {
-	listint_t *curr;
+	listint_t *current = head, *next;
 
-	if (head == NULL)
+	if (!head)
 		return;
 
-	curr = head;
-
-	while (curr)
+	while (current)
 	{
-		listint_t *next = curr->next;
-		free(curr->next);
-		free(curr);
-
-		curr = next;
+		next = current->next;
+		free(current);
+		current = next;
 	}
+	head = NULL;
 }

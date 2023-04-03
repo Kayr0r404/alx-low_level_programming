@@ -2,10 +2,11 @@
 
 
 /**
- * listint_len - function that returns the number of elements in a linked listint_t list.
+ * listint_len - function that returns
+ * the number of elements in a linked listint_t list.
  * @h: input list
  * Prototype: size_t listint_len(const listint_t *h);
- * Return : number of elements in a list
+ * Return: number of elements in a list
  */
 
 size_t listint_len(const listint_t *h)

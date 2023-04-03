@@ -1,0 +1,23 @@
+#include "lists.h"
+
+/**
+ * pop_listint - a function that deletes the head node
+ * of a listint_t linked list, and returns the head node’s data (n).
+ * @head: input list
+ * Prototype: int pop_listint(listint_t **head);
+ * Return: if the linked list is empty return 0
+ * 1 if success
+ */
+
+int pop_listint(listint_t **head)
+{
+	listint_t *tmp;
+
+	if (!*head)
+		return (0);
+
+	tmp = (*head)->next;
+	*head = tmp;
+
+	return (1);
+}

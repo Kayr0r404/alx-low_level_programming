@@ -21,13 +21,13 @@ void print_dog(struct dog *d)
 	}
 
 	if (d->name == NULL)
-		printf("%p\n", nulld);
+		printf("Name: %p\n", nulld);
 	else
-		printf("%s\n", d->name);
+		printf("Name: %s\n", d->name);
 
-	printf("%f\n", d->age);
+	printf("Age: %f\n", d->age);
 	if (d->owner == NULL)
-		printf("%p\n", nulld);
+		printf("Owner: %p\n", nulld);
 	else
-		printf("%s\n", d->owner);
+		printf("Owner: %s\n", d->owner);
 }

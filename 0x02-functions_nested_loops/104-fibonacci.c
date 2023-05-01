@@ -12,6 +12,9 @@ int main(void)
 {
 	int i, a = 1, b = 2;
 
+	printf("%d, ", a);
+	printf("%d, ", b);
+
 	for (i = 1; i <= 98 ; i++)
 	{
 		int c = a + b;

@@ -8,12 +8,12 @@
  * @owner: memeber of type = char *
  */
 
-struct dog
+typedef struct dog
 {
 	char *name;
 	float age;
 	char *owner;
-};
+} dog_t;
 
 /*********************************************
  *		Prototypes

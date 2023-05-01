@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "sstream": "c",
+        "ratio": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}

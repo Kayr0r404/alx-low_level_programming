@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
 {
 	int i;
 
+	/*use the for loop to avoid the warning of unused
+	 * argc*/
 	for (i = 0; i < argc; i++)
 	printf("%s\n", argv[0]);
 

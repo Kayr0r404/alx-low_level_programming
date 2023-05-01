@@ -55,10 +55,9 @@ char *str_concat(char *s1, char *s2)
 		ptrStrConcat = _nullPtr(s2);
 	else if (s2 == NULL)
 		ptrStrConcat = _nullPtr(s1);
-	else if (s1 == NULL && s2 == NULL)
+	else
 	{
-		ptrStrConcat = (char *) malloc(sizeof(char));
-		ptrStrConcat[i] = '\0';
+		printf("%s\n", "h");
 	}
 
 	return (ptrStrConcat);

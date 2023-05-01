@@ -7,27 +7,25 @@ int len(char *str);
 *_strcmp - entry
 *@s1: first string
 *@s2: second string
-*Description: compare two strings, char by char
-*Return: '0 if bothe string are similar,
-*1 if 2st string is greater than 2nd string,
-*-1 if 2nd string is greater than 1st string'
+*Description: compare two strings, char by char.
+*Return: ASCII difference
 */
 int _strcmp(char *s1, char *s2)
 {
-	int i, num;
+	int i, asciiDiff;
 	int maxi = max(len(s1), len(s2));
 
 	for (i = 0; i < maxi; i++)
 	{
 		if (s1[i] != s2[i])
 		{
-			num = (s1[i] - s2[i]);
+			asciiDiff = (s1[i] - s2[i]);
 			break;
 		}
 		else
-			num = (s1[i] - s2[i]);
+			asciiDiff = (s1[i] - s2[i]);
 	}
-	return (num);
+	return (asciiDiff);
 }
 
 /**

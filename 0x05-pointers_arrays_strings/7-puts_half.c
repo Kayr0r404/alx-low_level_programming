@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
 *puts_half - first Entry
 *@str: 'string'

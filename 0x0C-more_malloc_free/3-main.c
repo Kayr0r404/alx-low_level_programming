@@ -43,5 +43,34 @@ int main(void)
     a = array_range(0, 10);
     simple_print_buffer(a, 11);
     free(a);
+
+    a = array_range(3, 6);
+    simple_print_buffer(a, 4);
+    free(a);
+
+    a = array_range(0, 0);
+    simple_print_buffer(a, 0);
+    free(a);
+
+     a = array_range(1024, 2048);
+    simple_print_buffer(a, 2048 - 1024 + 1);
+    free(a);
+
+     a = array_range(4096, 4096);
+    simple_print_buffer(a, 4096 - 4096 + 1);
+    free(a);
+
+     a = array_range(4096, 4000);
+    simple_print_buffer(a, 97);
+    free(a);
+
+     a = array_range(-512, 512);
+    simple_print_buffer(a, 512 - (-512) + 1);
+    free(a);
+
+     a = array_range(-2048, -1024);
+    simple_print_buffer(a, -1024 - (-2048) + 1);
+    free(a);
+
     return (0);
 }

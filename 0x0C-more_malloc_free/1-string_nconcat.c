@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdio.h>
+#include "stdio.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -54,6 +54,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 
 	ptrConcat[i] = '\0';
+	
 	return (ptrConcat);
 }
 

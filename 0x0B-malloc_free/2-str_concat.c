@@ -23,6 +23,8 @@ char *str_concat(char *s1, char *s2)
 	int len = strLen(s1) + strLen(s2) + 1;
 
 	ptrStrConcat = (char *) malloc(len * sizeof(char));
+	if (!ptrStrConcat)
+		return (NULL);
 	if (s1 != NULL)
 	{
 		while (*s1 != '\0')

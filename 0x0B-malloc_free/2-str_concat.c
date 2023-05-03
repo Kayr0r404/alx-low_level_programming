@@ -1,10 +1,8 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-char *_nullPtr(char *s);
-
+int strLen(char *s);
 /**
  *str_concat - Entry Point
  *@s1: destination string
@@ -17,77 +15,53 @@ char *_nullPtr(char *s);
  * Return:' if NULL is passed, treat it as an empty string
  * The function should return NULL on failure
  */
-
 char *str_concat(char *s1, char *s2)
 {
 	char *ptrStrConcat;
 
-	unsigned int long i = 0;
+	unsigned int i = 0;
+	int len = strLen(s1) + strLen(s2) + 1;
 
-	if (s1 != NULL && s2 != NULL)
+	ptrStrConcat = (char *) malloc(len * sizeof(char));
+	if (s1 != NULL)
 	{
-		int len = strlen(s1) + strlen(s2) + 1;
-
-		ptrStrConcat = (char *) malloc(len * sizeof(char));
-
-		if (ptrStrConcat == NULL)
-			return (NULL);
-
 		while (*s1 != '\0')
 		{
 			ptrStrConcat[i++] = *s1;
 			s1++;
 		}
-
-		/*ptrStrConcat = realloc(ptrStrConcat, strlen(s2) * sizeof(char) + 1);*/
-		if (ptrStrConcat == NULL)
-			return (NULL);
-
+	}
+	if (s2 != NULL)
+	{
 		while (*s2 != '\0')
 		{
 			ptrStrConcat[i++] = *s2;
 			s2++;
 		}
-
-		ptrStrConcat[i] = '\0';
 	}
-	else if (s1 == NULL)
-		ptrStrConcat = _nullPtr(s2);
-	else if (s2 == NULL)
-		ptrStrConcat = _nullPtr(s1);
-	else
-	{
-		printf("%s\n", "h");
-	}
-
+	ptrStrConcat[i] = '\0';
 	return (ptrStrConcat);
 }
 
 /**
- * _nullPtr - double check if input pointer is null
- * @s: input pointer
- * Description: 'if input pointer is null'
- * Return: a pointer
- */
-
-char *_nullPtr(char *s)
+ * strLen - length of a string
+ * @s: passed str
+ * Return: numbers of chars in str
+*/
+int strLen(char *s)
 {
-	char *ptrStr;
-
 	int i = 0;
 
-	if (s != NULL)
+	if (s)
 	{
-		ptrStr = (char *) malloc(strlen(s) * sizeof(char) + 1);
-		if (ptrStr == NULL)
-			return (NULL);
-
 		while (*s != '\0')
 		{
-			ptrStr[i++] = *s;
+			i++;
 			s++;
 		}
 	}
-	ptrStr[i] = '\0';
-	return (ptrStr);
+	else
+		i = 0;
+
+	return (i);
 }

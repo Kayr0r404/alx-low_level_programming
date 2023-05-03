@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 int strLen(char str);
@@ -21,7 +22,7 @@ int strLen(char str);
 char *_strdup(char *str)
 {
 	char *ptrStr;
-	unsigned int i;
+	unsigned int i = 0;
 
 	if (str == NULL)
 		return (NULL);
@@ -38,6 +39,6 @@ char *_strdup(char *str)
 			str++;
 		}
 	}
-
+	ptrStr[i] = '\0';
 	return (ptrStr);
 }

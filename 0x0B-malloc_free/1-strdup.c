@@ -21,17 +21,23 @@ int strLen(char str);
 char *_strdup(char *str)
 {
 	char *ptrStr;
-	unsigned long int i;
+	unsigned int i;
 
 	if (str == NULL)
 		return (NULL);
 
-	ptrStr = (char *) malloc(2 * strlen(str));
+	ptrStr = (char *) malloc(strlen(str) * sizeof(char) + 1);
 	if (ptrStr == NULL)
 		return (NULL);
-	if (
-	for (i = 0; i < strlen(str); i++)
-		ptrStr[i] = str[i];
+
+	if (str)
+	{
+		while (*str != '\0')
+		{
+			ptrStr[i++] = *str;
+			str++;
+		}
+	}
 
 	return (ptrStr);
 }

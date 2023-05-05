@@ -19,12 +19,17 @@ int exponent(int base, int pow);
 unsigned int binary_to_uint(const char *b)
 {
 	int count = 0; /*count bits*/
-	int len = strlen(b) - 1;
+	int len;
 	size_t num = 0; /* converted binary*/
 
-	/* if b is not binary rerun 0*/
-	if (!isBinary(strdup(b)) || !b)
+	if (!b)
 		return (0);
+
+	/* if b is not binary rerun 0*/
+	if (!isBinary(strdup(b)))
+		return (0);
+
+	len = strlen(b) - 1;
 
 	while (len >= 0)
 	{

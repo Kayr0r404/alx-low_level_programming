@@ -16,7 +16,7 @@ int get_bit(unsigned long int num, unsigned int i)
 {
 	/* Check if the index is valid */
 	if (i >= sizeof(unsigned long int) * 8)
-		return (0);
+		return (-1);
 
 	/* Shift the number to the right by i bits */
 	num >>= i;

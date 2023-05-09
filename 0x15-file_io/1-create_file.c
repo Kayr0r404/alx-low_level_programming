@@ -40,7 +40,7 @@ int create_file(const char *filename, char *text_content)
 	}
 	elementsWritten = fwrite(text_content, 1, strlen(text_content), file);
 
-	if (elementsWritten != strlen(elementsWritten))
+	if (elementsWritten != strlen(text_content))
 	{
 		fclose(file);
 		return (-1);

@@ -19,17 +19,15 @@
 
 int create_file(const char *filename, char *text_content)
 {
-	FILE *file;
+	int file;
 	size_t elementsWritten;
 
 	if (!filename)
 		return (-1);
 
-	file = fopen(filename, "w+");
-	chmod(filename, 300);
+	file = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 	if (!file)
 	{
-		fclose(file);
 		return (-1);
 	}
 	if (!text_content)
@@ -39,13 +37,11 @@ int create_file(const char *filename, char *text_content)
 			return (-1);
 		*text_content = '\0';
 	}
-	elementsWritten = fwrite(text_content, 1, strlen(text_content), file);
+	elementsWritten = write(file, text_content, strlen(text_content));
 
 	if (elementsWritten != strlen(text_content))
 	{
-		fclose(file);
 		return (-1);
 	}
-	fclose(file);
 	return (1);
 }

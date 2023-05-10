@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	/* Check the number of arguments*/
 	if (argc != 3)
 	{
-		dprintf(stderr, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp fil_frm fil_t\n");
 		exit(97);
 	}
 
@@ -27,14 +27,14 @@ int main(int argc, char *argv[])
 	fp_from = fopen(argv[1], "r");
 	if (fp_from == NULL)
 	{
-		dprintf(stderr, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	/* Open the file to write to*/
 	fp_to = fopen(argv[2], "w");
 	if (fp_to == NULL)
 	{
-		dprintf(stderr, "Error: Can't write to file %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
 		exit(99);
 	}
 	/*Set the permissions of the file to be created*/

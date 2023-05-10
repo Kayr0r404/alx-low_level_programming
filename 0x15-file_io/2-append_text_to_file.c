@@ -18,29 +18,23 @@
 
 int append_text_to_file(const char *filename, char *text_content)
 {
-	FILE *file;
-	size_t elementsWritten;
+	int file, elementsWritten;
 
 	if (!filename)
 		return (-1);
 
-	file = fopen(filename, "a");
-	if (!file)
-	{
-		fclose(file);
+	file = open(filename, O_WRONLY | O_APPEND);
+
+	if (file == -1)
 		return (-1);
-	}
+
 	if (!text_content)
 		return (1);
 
-	elementsWritten = fwrite(text_content, 1, strlen(text_content), file);
-	if (elementsWritten != strlen(text_content))
-	{
-		fclose(file);
-		return (-1);
-	}
+	elementsWritten = write(file, text_content, strlen(text_content));
 
-	fclose(file);
+	if (elementsWritten == -1)
+		return (-1);
 
 	return (1);
 }

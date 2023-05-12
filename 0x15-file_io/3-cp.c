@@ -1,46 +1,91 @@
 #include "main.h"
 
+void copyFile(char *file1, char *file2);
+#define bufferSize 1024
+#define permission 0664
+
 /**
- * main - copies the content of a file to another file
- * @argc: the number of arguments passed
- * @argv: an array of arguments
+ * main - main function
+ * @argc: num of args
+ * @argv: array of strings
  * Return: 0
- */i
+ */
 
 int main(int argc, char *argv[])
 {
-	int dfr, dfw, k, x, y;
-	char buff[BUFSIZ];
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp fil_frm fil_t\n");
-		exit(98);
+		dprintf(2, "Usage: cp file_from file_to\n");
+		exit(97);
 	}
-	dfw = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	while ((r = read(dfr, buff, BUFSIZ)) > 0)
-	{
-		if (dfw < 0 || write(dfw, buff, k) != k)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			close(dfr);
-			exit(99);
-		}
-	}
-	if (k < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-	x = close(dfr);
-	y = close(dfw);
-	if (x < 0 || y < 0)
-	{
-		if (x < 0)
-			dprintf(STDERR_FILENO, "Error: Can't close df %d\n", dfr);
-		if (y < 0)
-			dprintf(STDERR_FILENO, "Error: Can't close df %d\n", dfw);
-		exit(100);
-	}
+	copyFile(argv[1], argv[2]);
+
 	return (0);
 }
+
+/**
+ * copyFile - program that copies the content of a file to another file.
+ * @file1: name of a file copying from
+ * @file2: name of a file copying to
+*/
+
+void copyFile(char *file1, char *file2)
+{
+	int fileFrom, fileTo, clsdFrm, clsdT;
+	char buffer[bufferSize];
+	ssize_t bytesRead, bytesWritten;
+
+	fileTo = open(file2, O_CREAT | O_WRONLY | O_TRUNC, permission);
+
+	if (fileTo == -1)
+	{
+		dprintf(2, "Error: Can't write to %s\n", file2);
+		clsdT = close(fileTo);
+		if (clsdT == -1)
+		{
+			dprintf(2, "Error: Can't close fd %d", fileTo);
+			exit(100);
+		}
+		exit(99);
+	}
+
+	fileFrom = open(file1, O_RDONLY);
+	if (fileFrom == -1)
+	{
+		dprintf(2, "Error: Can't read from file %s\n", file1);
+		clsdFrm = close(fileFrom);
+		if (clsdFrm == -1)
+		{
+			dprintf(2, "Error: Can't close fd %d", fileFrom);
+			exit(100);
+		}
+		exit(98);
+	}
+
+	bytesRead = read(fileFrom, buffer, sizeof(buffer));
+	if (bytesRead == -1)
+	{
+		dprintf(2, "Error: Can't read from file %s\n", file1);
+		clsdFrm = close(fileFrom);
+		if (clsdFrm == -1)
+		{
+			dprintf(2, "Error: Can't close fd %d", fileFrom);
+			exit(100);
+		}
+		exit(98);
+	}
+	bytesWritten = write(fileTo, buffer, bytesRead);
+	if (bytesRead != bytesWritten)
+	{
+		dprintf(2, "Error: Can't write to %s\n", file2);
+		clsdT = close(fileTo);
+		if (clsdT == -1)
+		{
+			dprintf(2, "Error: Can't close fd %d", fileTo);
+			exit(100);
+		}
+		exit(99);
+	}
+}
+

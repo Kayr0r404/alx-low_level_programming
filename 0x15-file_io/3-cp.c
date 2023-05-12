@@ -1,10 +1,9 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#define bufferSize 1024
+#define permission 0664
 
 /**
- * main - function
+ * main - program that copies the content of a file to another file.
  * @argc: num of args
  * @argv: array of strings
  * Return: 0
@@ -12,42 +11,45 @@
 
 int main(int argc, char *argv[])
 {
-	FILE *fp_from, *fp_to;
-	/* Create a buffer to read from the file*/
-	char buffer[1024];
+	int fileFrom, fileTo;
+	char buffer[bufferSize];
+	ssize_t nRead;
 
-	/* Check the number of arguments*/
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp fil_frm fil_t\n");
+		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
-	/*Open the file to read from*/
-	fp_from = fopen(argv[1], "r");
-	if (fp_from == NULL)
+	/* read the file*/
+	fileFrom = open(argv[1], O_RDONLY);
+	if (fileFrom == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	/* Open the file to write to*/
-	fp_to = fopen(argv[2], "w");
-	if (fp_to == NULL)
+
+	fileTo = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, permission);
+	if (fileTo == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+		dprintf(2, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-	/*Set the permissions of the file to be created*/
-	chmod(argv[2], 0666);
-	/* Read from the file and write to the other file*/
-	while (fgets(buffer, 1024, fp_from) != NULL)
+
+	while ((nRead = read(fileFrom, buffer, bufferSize)) > 0)
 	{
-		fputs(buffer, fp_to);
+		if (write(fileTo, buffer, nRead) < nRead)
+		{
+			int clsFileFrom = close(fileFrom);
+			int clsFileTo = close(fileTo);
+
+			if (clsFileFrom < 0)
+				dprintf(2, "Error: Can't close fd %d\n", fileFrom);
+			if (clsFileTo < 0)
+				dprintf(2, "Error: Can't close fd %d\n", fileTo);
+			exit(100);
+		}
 	}
-	/* Close the files*/
-	fclose(fp_from);
-	fclose(fp_to);
-	/* Return success*/
+
 	return (0);
 }
 

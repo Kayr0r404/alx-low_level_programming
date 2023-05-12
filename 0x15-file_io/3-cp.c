@@ -43,6 +43,7 @@ int copyFile(char *file1, char *file2)
 	if (fileFrom == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", file1);
+		close(fileFrom);
 		exit(98);
 	}
 
@@ -50,6 +51,7 @@ int copyFile(char *file1, char *file2)
 	if (fileTo == -1)
 	{
 		dprintf(2, "Error: Can't write to %s\n", file2);
+		close(fileTo);
 		exit(99);
 	}
 
@@ -57,10 +59,11 @@ int copyFile(char *file1, char *file2)
 	if (nRead == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", file2);
+		close(fileFrom);
 		exit(98);
 	}
 
-	if (write(fileTo, buffer, nRead) < nRead)
+	if (write(fileTo, buffer, nRead) != nRead)
 	{
 		int clsFileFrom = close(fileFrom);
 		int clsFileTo = close(fileTo);

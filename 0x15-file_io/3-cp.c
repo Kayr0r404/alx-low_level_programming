@@ -41,12 +41,6 @@ void copyFile(char *file1, char *file2)
 	if (fileTo == -1)
 	{
 		dprintf(2, "Error: Can't write to %s\n", file2);
-		clsdT = close(fileTo);
-		if (clsdT == -1)
-		{
-			dprintf(2, "Error: Can't close fd %d", fileTo);
-			exit(100);
-		}
 		exit(99);
 	}
 
@@ -54,38 +48,52 @@ void copyFile(char *file1, char *file2)
 	if (fileFrom == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", file1);
-		clsdFrm = close(fileFrom);
-		if (clsdFrm == -1)
+		clsdT = close(fileTo);
+		if (clsdT < 0)
 		{
-			dprintf(2, "Error: Can't close fd %d", fileFrom);
+			dprintf(2, "Error: Can't close fd %d", fileTo);
 			exit(100);
 		}
 		exit(98);
 	}
 
-	bytesRead = read(fileFrom, buffer, sizeof(buffer));
-	if (bytesRead == -1)
+	while ((bytesRead = read(fileFrom, buffer, bufferSize)) > 0)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", file1);
-		clsdFrm = close(fileFrom);
-		if (clsdFrm == -1)
+		bytesWritten = write(fileTo, buffer, bytesRead);
+		if (bytesWritten < bytesRead)
+		{
+			clsdFrm = close(fileFrom);
+			clsdT = close(fileTo);
+			if (clsdFrm < 0 || clsdT < 0)
+			{
+				if (clsdFrm < 0)
+				{
+					dprintf(2, "Error: Can't close fd %d", fileFrom);
+					exit(100);
+				}
+				else
+				{
+					dprintf(2, "Error: Can't close fd %d", fileFrom);
+					exit(100);
+				}
+			}
+		}
+	}
+
+	clsdFrm = close(fileFrom);
+	clsdT = close(fileTo);
+	if (clsdFrm < 0 || clsdT < 0)
+	{
+		if (clsdFrm < 0)
 		{
 			dprintf(2, "Error: Can't close fd %d", fileFrom);
 			exit(100);
 		}
-		exit(98);
-	}
-	bytesWritten = write(fileTo, buffer, bytesRead);
-	if (bytesRead != bytesWritten)
-	{
-		dprintf(2, "Error: Can't write to %s\n", file2);
-		clsdT = close(fileTo);
-		if (clsdT == -1)
+		else
 		{
-			dprintf(2, "Error: Can't close fd %d", fileTo);
+			dprintf(2, "Error: Can't close fd %d", fileFrom);
 			exit(100);
 		}
-		exit(99);
 	}
 }
 

@@ -35,10 +35,11 @@ void copyFile(char *file1, char *file2)
 	int fileFrom, fileTo, clsdFrm, clsdT;
 	char buffer[bufferSize];
 	ssize_t bytesRead, bytesWritten;
+	int strCompare = strcmp(file2, "");
 
 	fileTo = open(file2, O_CREAT | O_WRONLY | O_TRUNC, permission);
 
-	if (fileTo == -1)
+	if (fileTo == -1 || strCompare != 0)
 	{
 		dprintf(2, "Error: Can't write to %s\n", file2);
 		exit(99);

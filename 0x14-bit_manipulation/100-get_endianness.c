@@ -8,16 +8,16 @@
 
 int get_endianness(void)
 {
-    union EndianConversion u;
-    /* Set the value of the union to 1. */
-    u.big_endian = 1;
+	union EndianConversion u;
+	/* Set the value of the union to 1. */
+	u.big_endian = 1;
 
-    /* Check if the least significant byte is 1. */
-    if (u.little_endian[0] == 1)
-    {
-        /* The machine is little endian. */
-        return 1;
-    }
-    /* The machine is big endian. */
-    return 0;
+	/* Check if the least significant byte is 1. */
+	if (u.little_endian[0] == 1)
+	{
+		/* The machine is little endian. */
+		return (1);
+	}
+	/* The machine is big endian. */
+	return (0);
 }

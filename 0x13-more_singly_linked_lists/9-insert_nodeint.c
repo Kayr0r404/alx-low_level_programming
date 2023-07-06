@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-size_t numElements(listint_t *head);
-
 /**
  * insert_nodeint_at_index - function that inserts a
  * new node at a given position.
@@ -36,7 +34,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 
 	current = *head;
 
-	for (i = 0; i < idx - 1 && current; i++)
+	for (i = 0; i < idx - 1; i++)
 	{
 		current = current->next;
 	}
@@ -48,7 +46,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	newNode->next = current->next;
 	current->next = newNode;
 
-	return (current);
+	return (newNode);
 }
 
 /**

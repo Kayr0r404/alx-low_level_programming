@@ -2,10 +2,10 @@
 #define MAIN_H
 #include <stddef.h>
 /**
- * EndianConversion - Create a union of two integers, one big endian
+ * union EndianConversion - Create a union of two integers, one big endian
  * and one little endian.
- * @big_endian:
- * @little_endian:
+ * @big_endian: big
+ * @little_endian: little
  * Description: k
  */
 union EndianConversion

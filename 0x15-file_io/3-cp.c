@@ -69,12 +69,12 @@ void copyFile(char *file1, char *file2)
 				if (clsdFrm < 0)
 				{
 					dprintf(2, "Error: Can't close fd %d", fileFrom);
-					exit(100);
+					exit(99);
 				}
 				else
 				{
 					dprintf(2, "Error: Can't close fd %d", fileFrom);
-					exit(100);
+					exit(99);
 				}
 			}
 		}

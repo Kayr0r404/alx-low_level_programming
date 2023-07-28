@@ -60,7 +60,7 @@ int path_ls(char *cmd2, char **av);
 int path_ls_bin(char *cmd, char **av);
 void print_env(void);
 
-/*me*/
+/**/
 bool substringStartsAt(const char* str, const char* substr, int index);
 void remove_substring(char* str, const char* substr);
 void _error(char *name, char *cmd_name);

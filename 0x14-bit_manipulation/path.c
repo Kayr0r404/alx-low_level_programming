@@ -102,3 +102,31 @@ char *findCommandInPath(const char* command)
     free(pathCopy);
     return NULL;
 }
+
+char* extractCommandFromPath(const char* fullPath) {
+    char* command = strrchr(fullPath, '/'); // Find the last occurrence of '/'
+    if (command == NULL) {
+        // No '/' found in the path, return a copy of the fullPath
+        char* result = strdup(fullPath);
+        return result;
+    }
+
+    // Increment the pointer to skip the '/'
+    command++;
+
+    // Allocate memory for the command name
+    char* result = _strdup(command);
+    return result;
+}
+
+int man() {
+    const char* absolutePath = "/usr/bin/gcc";
+    char* commandName = extractCommandFromPath(absolutePath);
+
+    printf("Absolute Path: %s\n", absolutePath);
+    printf("Extracted Command: %s\n", commandName);
+
+    free(commandName);
+
+    return 0;
+}

@@ -79,5 +79,5 @@ void _putstr(const char *str);
 void _printf(const char *format, ...);
 char *_getenv(list_t *head, const char *name);
 char *findCommandInPath(const char* command);
-
+char* extractCommandFromPath(const char* fullPath);
 #endif

@@ -1,5 +1,4 @@
 #include "lists.h"
-
 /**
  * delete_dnodeint_at_index - function that deletes the node
  * at index index of a dlistint_t linked list.
@@ -9,33 +8,38 @@
 */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *current;
-	unsigned int i;
+	dlistint_t *curr, *nxt;
+	unsigned int i =  0;
 
-	if (head == NULL || *head == NULL)
-		return (-1); /* Invalid input or empty list*/
-
-	current = *head;
-	/* Traverse to the node at the specified index*/
-	for (i = 0; i < index; i++)
-	{
-		if (current == NULL)
-			return (-1); /* Index out of range*/
-		current = current->next;
-	}
-
-	/* If the node is the first one*/
+	if (*head == NULL)
+		return (-1);
+	curr = *head;
 	if (index == 0)
-		*head = current->next;
-	else
 	{
-		if (current->prev != NULL)
-			current->prev->next = current->next;
-
-		if (current->next != NULL)
-			current->next->prev = current->prev;
+		nxt = curr->next, free(curr);
+		nxt->prev = NULL, *head = nxt;
+		return (1);
 	}
 
-	free(current);
-	return (1); /* Successfully deleted the node*/
+	while (curr->next != NULL)
+	{
+		if (index == i + 1)
+		{
+			nxt = curr->next->next;
+			if (nxt == NULL)
+			{
+				nxt = curr->next, free(curr->next);
+				curr->next = NULL;
+				return (1);
+			}
+			free(curr->next);
+			curr->next = nxt, nxt->prev = curr;
+
+			return (1);
+		}
+		curr = curr->next;
+		i++;
+	}
+
+	return (-1);
 }

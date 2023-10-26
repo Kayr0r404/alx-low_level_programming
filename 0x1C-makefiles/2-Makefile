@@ -1,0 +1,13 @@
+CC = gcc
+SRC = main.c school.c
+NAME = school
+
+all: school
+
+school: main.o school.o
+	${CC} main.o school.o -o ${NAME}
+
+main.o: $(word 1, $(SRC))
+	${CC} -c -o main.o main.c
+school.o: $(word 1, $(SRC))
+	${CC} -c -o school.o school.c

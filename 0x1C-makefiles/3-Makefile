@@ -10,11 +10,10 @@ school: ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
 
 clean:
-	${RM} -f *~ *.swp *.swo ${NAME}
+	${RM} -f *~ ${NAME}
 oclean:
 	${RM} -f ${OBJ}
-fclean:
-	${RM} -f *~ *.swp *.swo ${NAME} ${OBJ}
+fclean: clean oclean
 .PHONY: re
 re: oclean school
 

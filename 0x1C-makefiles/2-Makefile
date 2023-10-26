@@ -8,7 +8,7 @@ all: school
 school: ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
 
-main.o: $(word 1, $(SRC))
-	${CC} -c -o $(word 1, $(OBJ)) $(word 1, $(SRC))
-school.o: $(word 2, $(SRC))
-	${CC} -c -o $(word 2, $(OBJ)) $(word 2, $(SRC))
+# main.o: $(word 1, $(SRC))
+# 	${CC} -c -o $(word 1, $(OBJ)) $(word 1, $(SRC))
+# school.o: $(word 2, $(SRC))
+# 	${CC} -c -o $(word 2, $(OBJ)) $(word 2, $(SRC))

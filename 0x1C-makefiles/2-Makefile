@@ -1,13 +1,14 @@
 CC = gcc
 SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
 NAME = school
 
 all: school
 
-school: main.o school.o
-	${CC} main.o school.o -o ${NAME}
+school: ${OBJ}
+	${CC} ${OBJ} -o ${NAME}
 
 main.o: $(word 1, $(SRC))
-	${CC} -c -o main.o main.c
-school.o: $(word 1, $(SRC))
-	${CC} -c -o school.o school.c
+	${CC} -c -o $(word 1, $(OBJ)) $(word 1, $(SRC))
+school.o: $(word 2, $(SRC))
+	${CC} -c -o $(word 2, $(OBJ)) $(word 2, $(SRC))

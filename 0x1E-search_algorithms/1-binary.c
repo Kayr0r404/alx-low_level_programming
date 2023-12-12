@@ -49,6 +49,6 @@ void print_array(int *array, size_t size)
 
 	printf("Searching in array: %d", *array);
 	for (i = 1; i < size; i++)
-		printf(" %d", *(array + i));
+		printf(", %d", *(array + i));
 	printf("\n");
 }

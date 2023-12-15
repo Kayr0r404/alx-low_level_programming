@@ -28,6 +28,8 @@ int exponential_search(int *array, size_t size, int value)
 	R = (bound * 2 < size) ? bound * 2 : size - 1;
 	L = bound / 2;
 
+	printf("Value found between indexes [%ld] and [%ld]\n", L, R);
+
 	while (L <= R)
 	{
 		size_t m = (L + R) / 2;
